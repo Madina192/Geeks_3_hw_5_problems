@@ -7,8 +7,6 @@ public class Main {
         Arrays.sort(numbersArray);
         System.out.println(Arrays.toString(numbersArray));
 
-
-
         //2
         int[] numbersList = {10002, 293, 123, 4352, 96354, 816, 992, 984, 884, 38};
         for (int i = 0; i < numbersList.length; i++) {
@@ -37,30 +35,38 @@ public class Main {
         String[] words = {"переменная", "функция", "метод", "аргумент", "параметр", "привязка", "длина", "высота", "размер"};
         String vowels = "аэоуиыеюя";
         String consonants = "бвгджзйклмнпрстфхцчшщ";
-
-        for (String word : words) {
-            System.out.println("Word: " + word);
-            System.out.print("Consonants: ");
-            for (char letter : word.toCharArray()) {
-                if (consonants.contains(String.valueOf(Character.toLowerCase(letter)))) {
-                    System.out.print(letter + " ");
-                }
-            }
-            System.out.println();
-            System.out.print("Vowels: ");
-            for (char letter : word.toCharArray()) {
-                if (vowels.contains(String.valueOf(Character.toLowerCase(letter)))) {
-                    System.out.print(letter + " ");
-                }
-            }
-            System.out.println("\n");
-        }
+        //так как в 4 и 5 задачках нужно вывести гласные и согласные буквы,
+        // чтобы не дублировать код, создала метод и вызвала дважды )
+        printVowelsConsonants(words, vowels, consonants);
 
         //5
         String[] androidWords = {"java", "kotlin", "python", "javascript", "nodejs", "go", "react", "react", "native", "swift"};
         String englishVowels = "aeiouy";
         String englishConsonants = "bcdfghjklmnpqrstvwxz";
+        printVowelsConsonants(androidWords, englishVowels, englishConsonants);
+        String android = "android";
+        String emptyStringAndroid = "";
+        boolean isLetterFound;
+        for (int i = 0; i < android.length(); i++) {
+            for (String word: androidWords) {
+                isLetterFound = false;
+                for (int j = 0; j < word.length(); j++) {
+                    if(android.charAt(i) == word.charAt(j)) {
+                        emptyStringAndroid += word.charAt(j);
+                        isLetterFound = true;
+                        break;
+                    }
+                }
+                if(isLetterFound) {
+                    break;
+                }
+            }
+        }
 
+        System.out.println(emptyStringAndroid);
+    }
+
+    private static void printVowelsConsonants(String[] androidWords, String englishVowels, String englishConsonants) {
         for (String word : androidWords) {
             System.out.println("Word: " + word);
             System.out.print("Consonants: ");
@@ -78,14 +84,5 @@ public class Main {
             }
             System.out.println("\n");
         }
-        String[] android = {"a", "n", "d", "r", "o", "i", "d"};
-        String emptyStringAndroid = "";
-        boolean isLetterFound = false;
-        for (int i = 0; i < androidWords.length; i++) {
-            for (int j = 0; j < android.length; j++) {
-
-            }
-        }
-        System.out.println(emptyStringAndroid);
     }
 }
