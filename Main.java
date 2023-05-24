@@ -36,7 +36,7 @@ public class Main {
         String vowels = "аэоуиыеюя";
         String consonants = "бвгджзйклмнпрстфхцчшщ";
         //так как в 4 и 5 задачках нужно вывести гласные и согласные буквы,
-        // чтобы не дублировать код, создала метод и вызвала дважды )
+        // чтобы не дублировать код, создала метод (printVowelsConsonants) и вызвала дважды )
         printVowelsConsonants(words, vowels, consonants);
 
         //5
@@ -45,27 +45,36 @@ public class Main {
         String englishConsonants = "bcdfghjklmnpqrstvwxz";
         printVowelsConsonants(androidWords, englishVowels, englishConsonants);
         String android = "android";
+        String view = "view";
         String emptyStringAndroid = "";
-        boolean isLetterFound;
-        for (int i = 0; i < android.length(); i++) {
+        String emptyStringView = "";
+        //здесь тоже использовала метод (createWordsFromArray), так как сформировала два слова
+        //чтобы не дублировать код )
+        emptyStringAndroid = createWordsFromArray(androidWords, android, emptyStringAndroid);
+        emptyStringView = createWordsFromArray(androidWords, view, emptyStringView);
+        System.out.println(emptyStringAndroid);
+        System.out.println(emptyStringView);
+    }
+
+    private static String createWordsFromArray(String[] androidWords, String view, String emptyStringView) {
+        boolean isViewFound;
+        for (int i = 0; i < view.length(); i++) {
             for (String word: androidWords) {
-                isLetterFound = false;
+                isViewFound = false;
                 for (int j = 0; j < word.length(); j++) {
-                    if(android.charAt(i) == word.charAt(j)) {
-                        emptyStringAndroid += word.charAt(j);
-                        isLetterFound = true;
+                    if(view.charAt(i) == word.charAt(j)) {
+                        emptyStringView += word.charAt(j);
+                        isViewFound = true;
                         break;
                     }
                 }
-                if(isLetterFound) {
+                if(isViewFound) {
                     break;
                 }
             }
         }
-
-        System.out.println(emptyStringAndroid);
+        return emptyStringView;
     }
-
     private static void printVowelsConsonants(String[] androidWords, String englishVowels, String englishConsonants) {
         for (String word : androidWords) {
             System.out.println("Word: " + word);
